@@ -120,17 +120,20 @@ void 0!==c?e&&"set"in e&&void 0!==(d=e.set(a,c,b))?d:a[b]=c:e&&"get"in e&&null!=
 	var duration = 500;
 
 	function setClass($node, name) {
+		var defer = new $.Deferred();
 		$node.addClass(name);
 
 		var onFinish = function() {
 			$node.removeClass(name);
+			defer.resolve();
 		};
 
 		setTimeout(onFinish, duration);
+		return defer.promise();
 	}
 
 	function wrap(item) {
-		return item instanceof $ ? item : $(item);
+		return item == null ? null : (item instanceof $ ? item : $(item));
 	}
 
 	function getCarousel(item, attr) {
@@ -142,49 +145,86 @@ void 0!==c?e&&"set"in e&&void 0!==(d=e.set(a,c,b))?d:a[b]=c:e&&"get"in e&&null!=
 		return $carousel.length ? $carousel : null;
 	}
 
-	function to($carousel, index) {
+	var count = 0;
 
-		if (typeof(index) === 'object') {
-			index = wrap(index).index();
-		}
+	function getElement(id, attr) {
+		var selector = '[' + attr + '="' + id + '"]';
+		var $element = $(selector);
+		return $element.length ? $element : null;
+	}
+
+	function toInner($carousel, index, effect) {
+		if (typeof(index) === 'object') index = wrap(index).index();
+
+		var promise = $.when();
 
 		var $slides = $carousel.children();
 		var $active = $slides.filter('.active');
 		$slides.removeClass('active');
-		setClass($active, 'leave');
 
 		var $slide = $slides.eq(index);
 		$slide.addClass('active');
-		setClass($slide, 'enter');
 
-		var id = $carousel.attr('id');
-		if (id == null) return;
+		if (effect) {
+			var pA = setClass($carousel, effect);
+			var pB = setClass($active, 'leave');
+			var pC = setClass($slide, 'enter');
 
-		var dots = '[data-dots="' + id + '"]';
-		var $dots = $(dots);
-
-		if ($dots.length) {
-			$dots = $dots.children();
-			$dots.removeClass('active');
-			$dots.eq(index).addClass('active');
+			promise = $.when(pA, pB, pC);
 		}
 
-		var text = '[data-index="' + id + '"]';
-		var $text = $(text);
-		if ($text.length) $text.text(index + 1);
+		var id = $carousel.attr('id');
+		if (id == null) return promise;
+
+		var $index = getElement(id, 'data-index');
+		if ($index) $index.text(index + 1);
+
+		var $dots = getElement(id, 'data-dots');
+		if ($dots == null) return promise;
+
+		$dots = $dots.children();
+		$dots.removeClass('active');
+		$dots.eq(index).addClass('active');
+
+		return promise;
 	}
 
-	function seed($carousel, value) {
+	function to($carousel, index, type) {
+		var args = $carousel.data('carouselArgs');
+		
+		if (args != null) {
+			$carousel.data('carouselArgs', [index, type]);
+			return;
+		}
+
+		var promise = toInner($carousel, index, type);
+		$carousel.data('carouselArgs', 0);
+
+		var handler = function() {
+			var args = $carousel.data('carouselArgs');
+			$carousel.data('carouselArgs', null);
+			if (!args) return;
+
+			var promise = toInner($carousel, args[0], args[1]);
+			$carousel.data('carouselArgs', 0);
+			promise.then(handler);
+		};
+
+		promise.then(handler);
+	}
+
+	function seed($carousel, type) {
 		var $slides = $carousel.children();
 		var index = $slides.filter('.active').index();
 		var count = $slides.length;
 
+		var value = type == 'next' ? 1 : -1;
 		var next = index + value;
 
 		if (next < 0) next = count - 1;
 		if (next >= count) next = 0;
 
-		to($carousel, next);
+		to($carousel, next, type);
 	}
 
 	function onDots(e) {
@@ -197,24 +237,20 @@ void 0!==c?e&&"set"in e&&void 0!==(d=e.set(a,c,b))?d:a[b]=c:e&&"get"in e&&null!=
 		to($carousel, this);
 	}
 
-	function onSeed(e, node, coef, attr) {
-		var $carousel = getCarousel(node, attr);
+	function onSeed(e, node, type) {
+		var $carousel = getCarousel(node, 'data-' + type);
 		if ($carousel == null) return;
 
 		e.preventDefault();
-		seed($carousel, coef);
-
-		return $carousel;
+		seed($carousel, type);
 	}
 
 	function onNext(e) {
-		var $carousel = onSeed(e, this, 1, 'data-next');
-		setClass($carousel, 'next');
+		return onSeed(e, this, 'next');
 	}
 
 	function onBack(e) {
-		var $carousel = onSeed(e, this, -1, 'data-back');
-		setClass($carousel, 'back');
+		return onSeed(e, this, 'back');
 	}
 
 	$(document)
