@@ -160,13 +160,18 @@ void 0!==c?e&&"set"in e&&void 0!==(d=e.set(a,c,b))?d:a[b]=c:e&&"get"in e&&null!=
 		var id = $carousel.attr('id');
 		if (id == null) return;
 
-		var selector = '[data-dots="' + id + '"]';
-		var $dots = $(selector);
-		if ($dots.length == 0) return;
+		var dots = '[data-dots="' + id + '"]';
+		var $dots = $(dots);
 
-		var $dots = $dots.children();
-		$dots.removeClass('active');
-		$dots.eq(index).addClass('active');
+		if ($dots.length) {
+			$dots = $dots.children();
+			$dots.removeClass('active');
+			$dots.eq(index).addClass('active');
+		}
+
+		var text = '[data-index="' + id + '"]';
+		var $text = $(text);
+		if ($text.length) $text.text(index + 1);
 	}
 
 	function seed($carousel, value) {
