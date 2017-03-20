@@ -1449,6 +1449,10 @@ body.fixed .header__menu {
   right: 0;
 }
 
+.preloader__resourse {
+  display: none;
+}
+
 .preloader__content {
   transition: all 1s ease-in-out;
   transform: translate(0, 0);
