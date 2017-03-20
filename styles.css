@@ -822,17 +822,13 @@ a:hover {
 }
 
 .footer__phone {
-  background-image: url(img/icon_phone_white.svg);
+  background-image: url(img/icon_phone_pink.svg);
   background-size: 12px 23px;
   padding-left: 23px;
 }
 
-.footer__phone:hover {
-  background-image: url(img/icon_phone_pink.svg);
-}
-
 .footer__email {
-  background-image: url(img/icon_email_white.svg);
+  background-image: url(img/icon_email_pink.svg);
   background-size: 19px 14px;
   margin-left: 37px;
   padding-left: 30px;
@@ -1604,7 +1600,10 @@ body.fixed .header__menu {
   display: block;
   height: 50px;
   margin-top: -25px;
-  background: no-repeat center center url(img/arrow_large_black.svg);
+  transition: all 250ms ease-in-out;
+  background-image: url(img/arrow_large_black.svg);
+  background-position: center center;
+  background-repeat: no-repeat;
   background-size: 27px 50px;
   content: '';
 }
@@ -1613,8 +1612,8 @@ body.fixed .header__menu {
   background-color: #e6b8a9;
 }
 
-.scroll:active {
-  background-color: transparent;
+.scroll:active:before {
+  background-image: url(img/arrow_large_white.svg);
 }
 
 .scroll.active {
