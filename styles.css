@@ -1585,7 +1585,7 @@ body.fixed .header__menu {
   border-radius: 50%;
   position: fixed;
   z-index: 100;
-  left: 60px;
+  left: 45.5px;
   bottom: 90px;
   display: block;
   width: 70px;
@@ -1624,6 +1624,12 @@ body.fixed .header__menu {
 
 .scroll.fixed {
   position: absolute;
+}
+
+@media screen and (max-width: 1280px) {
+  .scroll {
+    display: none;
+  }
 }
 
 .lead {
