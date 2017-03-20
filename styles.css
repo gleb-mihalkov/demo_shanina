@@ -424,14 +424,14 @@ button {
   visibility: hidden;
   opacity: 0;
   transition: all 250ms ease-in-out;
-  background: rgba(17, 21, 24, 0.63);
+  background: #111518 linear-gradient(to top, rgba(230, 184, 169, 0.71) 0%, rgba(40, 50, 74, 0.71) 100%);
   z-index: 1;
   content: '';
 }
 
 .image:hover:before {
   visibility: visible;
-  opacity: 1;
+  opacity: 0.63;
 }
 
 .image--zoom:after {
