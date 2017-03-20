@@ -1436,6 +1436,146 @@ body.fixed .header__menu {
   }
 }
 
+.preloader {
+  visibility: visible;
+  opacity: 1;
+  transition: all 250ms ease-in-out;
+  background: #3c4250;
+  position: fixed;
+  z-index: 900;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.preloader__content {
+  transition: all 1s ease-in-out;
+  transform: translate(0, 0);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: block;
+  width: 40px;
+  height: 40px;
+  margin-top: -20px !important;
+  margin-left: -20px;
+}
+
+.preloader__content span {
+  display: block;
+  bottom: 0px;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  background: #9b59b6;
+}
+
+.preloader__content span:nth-child(1) {
+  animation: preloader_1 1.5s infinite ease-in-out;
+}
+
+.preloader__content span:nth-child(2) {
+  animation: preloader_2 1.5s infinite ease-in-out;
+}
+
+.preloader__content span:nth-child(3) {
+  animation: preloader_3 1.5s infinite ease-in-out;
+}
+
+.preloader__content span:nth-child(4) {
+  animation: preloader_4 1.5s infinite ease-in-out;
+}
+
+.preloader.hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.preloader.hidden__content {
+  transform: translate(0, -24px);
+}
+
+@keyframes preloader_1 {
+  0% {
+    transform: translateX(0px) translateY(0px) rotate(0deg);
+    border-radius: 0px;
+  }
+  50% {
+    transform: translateX(-20px) translateY(-10px) rotate(-180deg);
+    border-radius: 20px;
+    background: #3498db;
+  }
+  80% {
+    transform: translateX(0px) translateY(0px) rotate(-360deg);
+    border-radius: 0px;
+  }
+  100% {
+    transform: translateX(0px) translateY(0px) rotate(-360deg);
+    border-radius: 0px;
+  }
+}
+
+@keyframes preloader_2 {
+  0% {
+    transform: translateX(0px) translateY(0px) rotate(0deg);
+    border-radius: 0px;
+  }
+  50% {
+    transform: translateX(20px) translateY(-10px) rotate(180deg);
+    border-radius: 20px;
+    background: #f1c40f;
+  }
+  80% {
+    transform: translateX(0px) translateY(0px) rotate(360deg);
+    border-radius: 0px;
+  }
+  100% {
+    transform: translateX(0px) translateY(0px) rotate(360deg);
+    border-radius: 0px;
+  }
+}
+
+@keyframes preloader_3 {
+  0% {
+    transform: translateX(0px) translateY(0px) rotate(0deg);
+    border-radius: 0px;
+  }
+  50% {
+    transform: translateX(-20px) translateY(10px) rotate(-180deg);
+    border-radius: 20px;
+    background: #2ecc71;
+  }
+  80% {
+    transform: translateX(0px) translateY(0px) rotate(-360deg);
+    border-radius: 0px;
+  }
+  100% {
+    transform: translateX(0px) translateY(0px) rotate(-360deg);
+    border-radius: 0px;
+  }
+}
+
+@keyframes preloader_4 {
+  0% {
+    transform: translateX(0px) translateY(0px) rotate(0deg);
+    border-radius: 0px;
+  }
+  50% {
+    transform: translateX(20px) translateY(10px) rotate(180deg);
+    border-radius: 20px;
+    background: #e74c3c;
+  }
+  80% {
+    transform: translateX(0px) translateY(0px) rotate(360deg);
+    border-radius: 0px;
+  }
+  100% {
+    transform: translateX(0px) translateY(0px) rotate(360deg);
+    border-radius: 0px;
+  }
+}
+
 .lead {
   background-color: #3c4250;
   position: relative;
@@ -1572,6 +1712,48 @@ body.fixed .header__menu {
   margin: 11px 0;
 }
 
+.lead__scroll {
+  transition: all 250ms ease-in-out;
+  border: 2px solid #fff;
+  border-bottom: none;
+  border-top-left-radius: 19px;
+  border-top-right-radius: 19px;
+  background: transparent;
+  position: absolute;
+  z-index: 10;
+  left: 50%;
+  bottom: 0;
+  display: block;
+  width: 37px;
+  height: 53px;
+  margin-left: -18.5px;
+  padding: 0;
+  font-size: 0;
+}
+
+.lead__scroll:before {
+  transition: all 250ms ease-in-out;
+  background: no-repeat center center url(img/arrow_white.svg);
+  background-size: 10px 18px;
+  transform: translate(0, 0) rotate(180deg);
+  display: block;
+  width: 100%;
+  height: 100%;
+  content: '';
+}
+
+.lead__scroll:hover {
+  background: rgba(230, 184, 169, 0.5);
+}
+
+.lead__scroll:hover:before {
+  transform: translate(0, -4.5px) rotate(180deg);
+}
+
+.lead__scroll:active:before {
+  transform: translate(0, 0) rotate(180deg);
+}
+
 @media screen and (max-width: 1440px) {
   .lead__inner {
     min-height: auto;
@@ -1614,7 +1796,7 @@ body.fixed .header__menu {
   .lead__text .heading--sub {
     margin: 20.5px 0;
   }
-  .lead__video, .lead__soc {
+  .lead__video, .lead__soc, .lead__scroll {
     display: none;
   }
   .lead__aside {

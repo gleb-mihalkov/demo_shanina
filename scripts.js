@@ -217,3 +217,42 @@ void 0!==c?e&&"set"in e&&void 0!==(d=e.set(a,c,b))?d:a[b]=c:e&&"get"in e&&null!=
 		.on('click', '[data-back]', onBack)
 		.on('click', '[data-next]', onNext);
 })(window.jQuery);
+/// ----------------------
+/// Прокрутка вниз.
+/// ----------------------
+!(function($) {
+
+	function onClick(e) {
+		e.preventDefault();
+
+		var $item = $(this);
+		var position = $item.height() + $item.offset().top;
+		
+		var offset = $item.attr('data-scroll');
+		if (offset) position += offset * 1;
+
+		$.scroll(position);
+	}
+
+	$.scroll = function(position) {
+		$('html, body').animate({scrollTop: position}, 250);
+	};
+
+	$(document).on('click', '[data-scroll]', onClick);
+})(window.jQuery);
+
+/// ----------------------
+/// Прелоадер.
+/// ----------------------
+!(function($) {
+
+	$(document).ready(function() {
+		var $preloader = $('[data-preloader]');
+		if ($preloader.length == 0) return;
+
+		$(window).on('load', function() {
+			$preloader.addClass('hidden');
+			$(document.body).removeClass('fixed');
+		});
+	});
+})(window.jQuery);
