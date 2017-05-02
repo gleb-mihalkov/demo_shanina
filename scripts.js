@@ -10,7 +10,7 @@ jQuery.easing["jswing"]=jQuery.easing["swing"];jQuery.extend(jQuery.easing,{def:
 /// ----------------------
 !(function($) {
 
-	var duration = 250;
+	var duration = 1000;
 
 	var _scrollbars = null;
 
@@ -141,7 +141,7 @@ jQuery.easing["jswing"]=jQuery.easing["swing"];jQuery.extend(jQuery.easing,{def:
 !(function($) {
 	if ($ == null) return console.warn('jQuery is required.');
 
-	var duration = 500;
+	var duration = 1000;
 
 	function setClass($node, name) {
 		var defer = new $.Deferred();

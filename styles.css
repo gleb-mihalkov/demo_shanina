@@ -1035,7 +1035,7 @@ a:hover {
 .modal {
   visibility: hidden;
   opacity: 0;
-  transition: all 250ms ease-in-out;
+  transition: all 1s ease-in-out;
   background: rgba(60, 66, 80, 0.9);
   position: fixed;
   z-index: 100;
@@ -1142,7 +1142,7 @@ body.fixed .header__menu {
 }
 
 .menu__logo {
-  transition: all 250ms ease-in-out;
+  transition: all 1s ease-in-out;
   transform: translate(0, -24px);
   background: url(img/logo_white.svg) no-repeat center top;
   background-size: 143px 89px;
@@ -1158,7 +1158,7 @@ body.fixed .header__menu {
 
 .menu__inner {
   position: relative;
-  transition: all 250ms ease-in-out;
+  transition: all 1s ease-in-out;
 }
 
 .menu__inner:before, .menu__inner:after {
@@ -1208,9 +1208,13 @@ body.fixed .header__menu {
   transform: translate(24px, 24px);
 }
 
+.menu__inner:before, .menu__inner:after {
+  transition-duration: 1s;
+}
+
 .menu__nav {
   transform: translate(0, 24px);
-  transition: all 250ms ease-in-out;
+  transition: all 1s ease-in-out;
   padding: 46px 0;
 }
 
@@ -1309,7 +1313,7 @@ body.fixed .header__menu {
 
 .lightbox__content {
   transform: translate(0, 24px);
-  transition: all 250ms ease-in-out;
+  transition: all 1s ease-in-out;
   position: relative;
   max-width: 1544px;
   width: 100%;
@@ -1342,7 +1346,7 @@ body.fixed .header__menu {
   display: block;
   height: 28px;
   margin-top: -14px;
-  transition: all 250ms ease-in-out;
+  transition: all 1s ease-in-out;
   background: no-repeat center center url(img/arrow_large_white.svg);
   background-size: 52px 28px;
   content: '';
@@ -1395,7 +1399,7 @@ body.fixed .header__menu {
 
 .lightbox__item {
   visibility: hidden;
-  transition: all 250ms ease-in-out;
+  transition: all 1s ease-in-out;
   position: absolute;
   z-index: 1;
   top: 0;
