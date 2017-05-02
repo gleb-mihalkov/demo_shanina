@@ -294,6 +294,8 @@ button {
 .share {
   display: block;
   margin: 16px 0;
+  transition: all 1s ease-in-out;
+  opacity: 1;
 }
 
 .share__text {
@@ -327,6 +329,11 @@ button {
 
 .share__soc .soc:first-child {
   margin-left: 0;
+}
+
+.share.hidden {
+  visibility: hidden;
+  opacity: 0;
 }
 
 .heading {
@@ -2299,6 +2306,12 @@ body.fixed .header__menu {
   color: #db9781;
 }
 
+.contacts__block:after, .contacts__title, .contacts__value {
+  transition: all 1s ease-in-out;
+  transform: translate(0, 0);
+  opacity: 1;
+}
+
 @media screen and (max-width: 800px) {
   .contacts {
     width: 100%;
@@ -2311,4 +2324,15 @@ body.fixed .header__menu {
     left: 50%;
     margin-left: -40px;
   }
+}
+
+.contacts.hidden .contacts__block:after {
+  transform: translate(24px, 0);
+  opacity: 0;
+}
+
+.contacts.hidden .contacts__title,
+.contacts.hidden .contacts__value {
+  transform: translate(-24px, 0);
+  opacity: 0;
 }
