@@ -10,7 +10,7 @@ jQuery.easing["jswing"]=jQuery.easing["swing"];jQuery.extend(jQuery.easing,{def:
 /// ----------------------
 !(function($) {
 
-	var duration = 1000;
+	var duration = 500;
 
 	var _scrollbars = null;
 
@@ -525,7 +525,7 @@ jQuery.easing["jswing"]=jQuery.easing["swing"];jQuery.extend(jQuery.easing,{def:
 		.on('click', '[data-scroll-down]', onScrollDown)
 		.on('click', '[data-scroll]', onScrollTop)
 		.on('scroll', onScrollChange)
-		.ready(onReady);
+		.on('start', onReady);
 
 	$(window).on('resize', clearCache);
 })(window.jQuery);
@@ -535,13 +535,24 @@ jQuery.easing["jswing"]=jQuery.easing["swing"];jQuery.extend(jQuery.easing,{def:
 /// ----------------------
 !(function($) {
 
+  var duration = 500;
+
+  function after() {
+    $(document).trigger('start');
+  }
+
 	$(document).ready(function() {
 		var $preloader = $('[data-preloader]');
-		if ($preloader.length == 0) return;
+
+		if ($preloader.length == 0) {
+      after();
+      return;
+    }
 
 		$(window).on('load', function() {
 			$preloader.addClass('hidden');
 			$(document.body).removeClass('fixed');
+      setTimeout(after, duration);
 		});
 	});
 })(window.jQuery);

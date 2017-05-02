@@ -294,8 +294,9 @@ button {
 .share {
   display: block;
   margin: 16px 0;
-  transition: all 1.5s ease-in-out;
+  transition: all 1s ease-in-out;
   opacity: 1;
+  transition-delay: 1s;
 }
 
 .share__text {
@@ -364,7 +365,7 @@ button {
 }
 
 .heading > span, .heading:after {
-  transition: all 1.5s ease-in-out;
+  transition: all 1s ease-in-out;
   transform: translate(0, 0);
   opacity: 1;
 }
@@ -408,7 +409,7 @@ button {
 }
 
 .text {
-  transition: all 1.5s ease-in-out;
+  transition: all 1s ease-in-out;
   transform: translate(0, 0);
   opacity: 1;
   display: block;
@@ -839,7 +840,7 @@ a:hover {
 }
 
 .footer__content {
-  transition: all 1.5s ease-in-out;
+  transition: all 1s ease-in-out;
   opacity: 1;
   display: -ms-flexbox;
   display: flex;
@@ -1035,7 +1036,7 @@ a:hover {
 .modal {
   visibility: hidden;
   opacity: 0;
-  transition: all 1s ease-in-out;
+  transition: all 500ms ease-in-out;
   background: rgba(60, 66, 80, 0.9);
   position: fixed;
   z-index: 100;
@@ -1142,7 +1143,7 @@ body.fixed .header__menu {
 }
 
 .menu__logo {
-  transition: all 1s ease-in-out;
+  transition: all 500ms ease-in-out;
   transform: translate(0, -24px);
   background: url(img/logo_white.svg) no-repeat center top;
   background-size: 143px 89px;
@@ -1158,7 +1159,7 @@ body.fixed .header__menu {
 
 .menu__inner {
   position: relative;
-  transition: all 1s ease-in-out;
+  transition: all 500ms ease-in-out;
 }
 
 .menu__inner:before, .menu__inner:after {
@@ -1209,12 +1210,12 @@ body.fixed .header__menu {
 }
 
 .menu__inner:before, .menu__inner:after {
-  transition-duration: 1s;
+  transition-duration: 500ms;
 }
 
 .menu__nav {
   transform: translate(0, 24px);
-  transition: all 1s ease-in-out;
+  transition: all 500ms ease-in-out;
   padding: 46px 0;
 }
 
@@ -1313,7 +1314,7 @@ body.fixed .header__menu {
 
 .lightbox__content {
   transform: translate(0, 24px);
-  transition: all 1s ease-in-out;
+  transition: all 500ms ease-in-out;
   position: relative;
   max-width: 1544px;
   width: 100%;
@@ -1346,7 +1347,7 @@ body.fixed .header__menu {
   display: block;
   height: 28px;
   margin-top: -14px;
-  transition: all 1s ease-in-out;
+  transition: all 500ms ease-in-out;
   background: no-repeat center center url(img/arrow_large_white.svg);
   background-size: 52px 28px;
   content: '';
@@ -1399,7 +1400,7 @@ body.fixed .header__menu {
 
 .lightbox__item {
   visibility: hidden;
-  transition: all 1s ease-in-out;
+  transition: all 500ms ease-in-out;
   position: absolute;
   z-index: 1;
   top: 0;
@@ -1957,18 +1958,17 @@ body.fixed .header__menu {
 .lead .heading--lead:after,
 .lead .heading--sub,
 .lead .text {
-  transition: all 1.5s ease-in-out;
+  transition: all 1s ease-in-out;
   transform: translate(0, 0);
   opacity: 1;
-  transition-delay: .5s;
 }
 
 .lead .lead__scroll,
 .lead .lead__aside,
 .lead .lead__soc {
-  transition: all 1.5s ease-in-out;
+  transition: all 1s ease-in-out;
   opacity: 1;
-  transition-delay: 1.5s;
+  transition-delay: 1s;
 }
 
 .lead .lead__inner:before, .lead .lead__inner:after {
@@ -1976,8 +1976,7 @@ body.fixed .header__menu {
 }
 
 .lead .lead__inner:before, .lead .lead__inner:after {
-  transition-duration: 2s;
-  transition-delay: .5s;
+  transition-duration: 1s;
   opacity: 1;
 }
 
@@ -2301,25 +2300,34 @@ body.fixed .header__menu {
 }
 
 .contacts__value {
-  transition: all 250ms ease-in-out;
-  color: #3c4250;
   display: block;
   margin: 10.5px 0;
   font-size: 24px;
 }
 
-.contacts__value:hover {
+.contacts__value a {
+  transition: all 250ms ease-in-out;
+  color: #3c4250;
+}
+
+.contacts__value a:hover {
   color: #e6b8a9;
 }
 
-.contacts__value:active {
+.contacts__value a:active {
   color: #db9781;
 }
 
-.contacts__block:after, .contacts__title, .contacts__value {
-  transition: all 1.5s ease-in-out;
+.contacts__block:after, .contacts__title {
+  transition: all 1s ease-in-out;
   transform: translate(0, 0);
   opacity: 1;
+}
+
+.contacts__value {
+  transition: all 1s ease-in-out;
+  opacity: 1;
+  transition-delay: 125ms;
 }
 
 @media screen and (max-width: 800px) {
@@ -2341,8 +2349,11 @@ body.fixed .header__menu {
   opacity: 0;
 }
 
-.contacts.hidden .contacts__title,
-.contacts.hidden .contacts__value {
+.contacts.hidden .contacts__title {
   transform: translate(-24px, 0);
+  opacity: 0;
+}
+
+.contacts.hidden .contacts__value {
   opacity: 0;
 }
