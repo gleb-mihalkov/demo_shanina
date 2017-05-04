@@ -13,6 +13,7 @@ jQuery.easing["jswing"]=jQuery.easing["swing"];jQuery.extend(jQuery.easing,{def:
 	var duration = 500;
 
 	var _scrollbars = null;
+	var $_body = null;
 
 	function getScrollbars() {
 		if (_scrollbars != null) return _scrollbars;
@@ -31,19 +32,30 @@ jQuery.easing["jswing"]=jQuery.easing["swing"];jQuery.extend(jQuery.easing,{def:
 		return _scrollbars;
 	}
 
+	function isScrollbars() {
+		return document.body.scrollHeight > document.body.height;
+	}
+
 	function unfix() {
 		$(document.body).removeClass('fixed').css('padding-right', '');
 	}
 
 	function fix() {
+		var $body = $(document.body).addClass('fixed');
+		if (!isScrollbars()) return;
+
 		var offset = getScrollbars() + 'px';
-		$(document.body).css('padding-right', offset).addClass('fixed');
+		$body.css('padding-right', offset);
 	}
 
 	function init($modal) {
+		if (!isScrollbars()) return;
+
 		var offset = getScrollbars() + 'px';
+		
 		var $close = $modal.find('.modal__close');
 		$close.css('right', offset);
+		$modal.css('padding-right', offset);
 	}
 
 	function show($modal, cb) {
