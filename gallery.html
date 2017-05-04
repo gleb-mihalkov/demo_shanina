@@ -118,7 +118,7 @@
 			</div>
 		</main>
 		<div class="page__bottom">
-			<nav role="navigation" class="pagination">
+			<nav role="navigation" class="pagination  hidden" data-scroll-enter="">
 	<a href="#" class="pagination__item">1</a>
 	<span class="pagination__item pagination__item--dots"></span>
 	<a href="#" class="pagination__item">4</a>
@@ -161,44 +161,46 @@
 			</div>
 		</div>
 	</div>
-</div>		<div class="modal modal--plain  lightbox" id="gallery">
+</div>		<div class="modal  lightbox" id="gallery">
 		<button type="button" class="modal__close" data-close=""></button>
 		<div class="modal__content  lightbox__content">
-			<div class="lightbox__images" id="lightbox">
-									<div class="lightbox__item active">
-						<img src="res/lightbox_01.jpg" class="lightbox__image" alt="">
-					</div>
-									<div class="lightbox__item">
-						<img src="res/lightbox_02.jpg" class="lightbox__image" alt="">
-					</div>
-									<div class="lightbox__item">
-						<img src="res/lightbox_03.jpg" class="lightbox__image" alt="">
-					</div>
-									<div class="lightbox__item">
-						<img src="res/lightbox_04.jpg" class="lightbox__image" alt="">
-					</div>
-									<div class="lightbox__item">
-						<img src="res/lightbox_05.jpg" class="lightbox__image" alt="">
-					</div>
-									<div class="lightbox__item">
-						<img src="res/lightbox_06.jpg" class="lightbox__image" alt="">
-					</div>
-									<div class="lightbox__item">
-						<img src="res/lightbox_07.jpg" class="lightbox__image" alt="">
-					</div>
-									<div class="lightbox__item">
-						<img src="res/lightbox_08.jpg" class="lightbox__image" alt="">
-					</div>
-									<div class="lightbox__item">
-						<img src="res/lightbox_09.jpg" class="lightbox__image" alt="">
-					</div>
-							</div>
-			<div class="lightbox__text">
-				<button type="button" class="lightbox__button lightbox__button--back" data-back="lightbox"></button>
-				<span class="lightbox__numbers">
-					<span data-index="lightbox">1</span> / 9
-				</span>
-				<button type="button" class="lightbox__button lightbox__button--next" data-next="lightbox"></button>
+			<div class="lightbox__inner">
+				<div class="lightbox__images" id="lightbox">
+											<div class="lightbox__item active">
+							<img src="res/lightbox_01.jpg" class="lightbox__image" alt="">
+						</div>
+											<div class="lightbox__item">
+							<img src="res/lightbox_02.jpg" class="lightbox__image" alt="">
+						</div>
+											<div class="lightbox__item">
+							<img src="res/lightbox_03.jpg" class="lightbox__image" alt="">
+						</div>
+											<div class="lightbox__item">
+							<img src="res/lightbox_04.jpg" class="lightbox__image" alt="">
+						</div>
+											<div class="lightbox__item">
+							<img src="res/lightbox_05.jpg" class="lightbox__image" alt="">
+						</div>
+											<div class="lightbox__item">
+							<img src="res/lightbox_06.jpg" class="lightbox__image" alt="">
+						</div>
+											<div class="lightbox__item">
+							<img src="res/lightbox_07.jpg" class="lightbox__image" alt="">
+						</div>
+											<div class="lightbox__item">
+							<img src="res/lightbox_08.jpg" class="lightbox__image" alt="">
+						</div>
+											<div class="lightbox__item">
+							<img src="res/lightbox_09.jpg" class="lightbox__image" alt="">
+						</div>
+									</div>
+				<div class="lightbox__text">
+					<button type="button" class="lightbox__button lightbox__button--back" data-back="lightbox"></button>
+					<span class="lightbox__numbers">
+						<span data-index="lightbox">1</span> / 9
+					</span>
+					<button type="button" class="lightbox__button lightbox__button--next" data-next="lightbox"></button>
+				</div>
 			</div>
 		</div>
 	</div>
