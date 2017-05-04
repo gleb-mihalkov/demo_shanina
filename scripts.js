@@ -40,7 +40,14 @@ jQuery.easing["jswing"]=jQuery.easing["swing"];jQuery.extend(jQuery.easing,{def:
 		$(document.body).css('padding-right', offset).addClass('fixed');
 	}
 
+	function init($modal) {
+		var offset = getScrollbars() + 'px';
+		var $close = $modal.find('.modal__close');
+		$close.css('right', offset);
+	}
+
 	function show($modal, cb) {
+		init($modal);
 		$modal.addClass('active');
 		fix();
 	}

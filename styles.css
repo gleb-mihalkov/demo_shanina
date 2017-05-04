@@ -434,7 +434,7 @@ button {
 
 .image__value {
   transition: all 5s linear;
-  transform: scale(1);
+  transform: none;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -649,6 +649,7 @@ a:hover {
 }
 
 .global {
+  position: relative;
   min-height: 100%;
   display: -ms-flexbox;
   display: flex;
@@ -1097,6 +1098,10 @@ a:hover {
   padding: 128px 0;
   text-align: center;
   font-size: 0;
+}
+
+.modal::-webkit-scrollbar {
+  display: none;
 }
 
 .modal:before {
