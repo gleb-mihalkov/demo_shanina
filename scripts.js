@@ -161,6 +161,7 @@ jQuery.easing["jswing"]=jQuery.easing["swing"];jQuery.extend(jQuery.easing,{def:
 	if ($ == null) return console.warn('jQuery is required.');
 
 	var duration = 1000;
+	var autoplay = 2000;
 
 	function setClass($node, name) {
 		var defer = new $.Deferred();
@@ -218,6 +219,8 @@ jQuery.easing["jswing"]=jQuery.easing["swing"];jQuery.extend(jQuery.easing,{def:
 			promise = $.when(pA, pB, pC);
 		}
 
+		setAutoplay($carousel);
+
 		var id = $carousel.attr('id');
 		if (id == null) return promise;
 
@@ -272,6 +275,25 @@ jQuery.easing["jswing"]=jQuery.easing["swing"];jQuery.extend(jQuery.easing,{def:
 		to($carousel, next, type);
 	}
 
+	function setAutoplay($carousel) {
+		var time = $carousel.attr('data-autoplay');
+		if (time === null) return;
+
+		var prev = $carousel.data('carouselAutoplay');
+		if (prev) clearTimeout(prev);
+
+		time *= 1;
+		if (!time || isNaN(time)) time = autoplay;
+		time += duration;
+
+		var tick = function() {
+			seed($carousel, 'next');
+		};
+
+		var stamp = setTimeout(tick, time);
+		$carousel.data('carouselAutoplay', stamp);
+	}
+
 	function onDots(e) {
 		var $dots = $(e.target).closest('[data-dots]');
 
@@ -301,7 +323,16 @@ jQuery.easing["jswing"]=jQuery.easing["swing"];jQuery.extend(jQuery.easing,{def:
 	$(document)
 		.on('click', '[data-dots] > *', onDots)
 		.on('click', '[data-back]', onBack)
-		.on('click', '[data-next]', onNext);
+		.on('click', '[data-next]', onNext)
+
+		.on('start', function() {
+			var $autoplays = $('[data-autoplay]');
+
+			for (var i = 0; i < $autoplays.length; i++) {
+				var $carousel = $autoplays.eq(i);
+				setAutoplay($carousel);
+			}
+		});
 })(window.jQuery);
 /// ----------------------
 /// Прокрутка вниз.
