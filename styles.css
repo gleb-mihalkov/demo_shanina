@@ -425,10 +425,22 @@ button {
 }
 
 .image {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.image__value {
+  transition: all 5s linear;
+  transform: scale(1);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
   display: block;
   width: 100%;
   height: 100%;
@@ -469,6 +481,10 @@ button {
 .image:hover:before {
   visibility: visible;
   opacity: 0.63;
+}
+
+.image:hover .image__value {
+  transform: scale(1.125);
 }
 
 .image--zoom:after {
