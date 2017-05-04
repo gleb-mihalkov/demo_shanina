@@ -1849,6 +1849,8 @@ body.fixed .header-menu {
   transition: all 250ms ease-in-out;
   background: no-repeat center center transparent url(img/icon_video_white.svg);
   background-size: 30px 28px;
+  position: relative;
+  top: -60px;
   display: block;
   width: 30px;
   height: 30px;
