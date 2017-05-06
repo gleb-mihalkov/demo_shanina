@@ -332,6 +332,15 @@ button {
   margin-left: 0;
 }
 
+.share .ya-share2__item {
+  margin-left: 10px !important;
+  margin-right: 0 !important;
+}
+
+.share .ya-share2__item:first-child {
+  margin-left: 0 !important;
+}
+
 .share.hidden {
   visibility: hidden;
   opacity: 0;
@@ -2452,4 +2461,39 @@ body.fixed .header-menu {
 
 .contacts.hidden .contacts__value {
   opacity: 0;
+}
+
+.ya-share2__icon {
+  transition: all 250ms ease-in-out;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 24px 24px;
+}
+
+.ya-share2__badge {
+  background: none !important;
+}
+
+.ya-share2__item_service_vkontakte .ya-share2__icon {
+  background-image: url(img/soc_vk_black.svg) !important;
+}
+
+.ya-share2__item_service_vkontakte .ya-share2__icon:hover {
+  background-image: url(img/soc_vk_pink.svg) !important;
+}
+
+.ya-share2__item_service_odnoklassniki .ya-share2__icon {
+  background-image: url(img/soc_ok_black.svg) !important;
+}
+
+.ya-share2__item_service_odnoklassniki .ya-share2__icon:hover {
+  background-image: url(img/soc_ok_pink.svg) !important;
+}
+
+.ya-share2__item_service_facebook .ya-share2__icon {
+  background-image: url(img/soc_fb_black.svg) !important;
+}
+
+.ya-share2__item_service_facebook .ya-share2__icon:hover {
+  background-image: url(img/soc_fb_pink.svg) !important;
 }
