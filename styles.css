@@ -368,12 +368,26 @@ button {
   content: '';
 }
 
+.heading a {
+  transition: all 250ms ease-in-out;
+  color: #3c4250;
+}
+
+.heading a:hover {
+  color: #e6b8a9;
+}
+
+.heading a:active {
+  color: #db9781;
+}
+
 .heading > span {
   display: inline-block;
   color: inherit;
 }
 
-.heading > span, .heading:after {
+.heading > span,
+.heading > a, .heading:after {
   transition: all 1s ease-in-out;
   transform: translate(0, 0);
   opacity: 1;
