@@ -33,7 +33,7 @@ jQuery.easing["jswing"]=jQuery.easing["swing"];jQuery.extend(jQuery.easing,{def:
 	}
 
 	function isScrollbars() {
-		return document.body.scrollHeight > document.body.height;
+		return document.body.scrollHeight > $(document.body).height();
 	}
 
 	function unfix() {
@@ -59,7 +59,6 @@ jQuery.easing["jswing"]=jQuery.easing["swing"];jQuery.extend(jQuery.easing,{def:
 	}
 
 	function show($modal, cb) {
-		init($modal);
 		$modal.addClass('active');
 		fix();
 	}
@@ -116,9 +115,19 @@ jQuery.easing["jswing"]=jQuery.easing["swing"];jQuery.extend(jQuery.easing,{def:
 		close($modal);
 	}
 
+	function onStart() {
+		var $modals = $('.modal');
+		
+		for (var i = 0; i < $modals.length; i++) {
+			var $modal = $modals.eq(i);
+			init($modal);
+		}
+	}
+
 	$(document)
 		.on('click', '.modal, .modal [data-close]', onClose)
-		.on('click', '[data-modal]', onButton);
+		.on('click', '[data-modal]', onButton)
+		.on('start', onStart);
 })(window.jQuery);
 
 /// ----------------------

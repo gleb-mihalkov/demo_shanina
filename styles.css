@@ -2271,6 +2271,8 @@ body.fixed .header-menu {
 .gallery__content {
   width: 400px;
   padding-right: 43px;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
 }
 
 .gallery__bottom {
@@ -2280,6 +2282,7 @@ body.fixed .header-menu {
 .gallery__images {
   -ms-flex: 1 0 auto;
   flex: 1 0 auto;
+  max-width: 1440px;
   margin-left: -10px;
   margin-right: -10px;
   -moz-column-count: 2;
@@ -2333,6 +2336,25 @@ body.fixed .header-menu {
   }
   .gallery__image {
     width: 100%;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .gallery {
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+  }
+  .gallery__images {
+    width: calc((100vw - 1280px) / 2 + 800px);
+    -moz-column-count: 3;
+    column-count: 3;
+  }
+}
+
+@media screen and (min-width: 2560px) {
+  .gallery__images {
+    -moz-column-count: 4;
+    column-count: 4;
   }
 }
 
