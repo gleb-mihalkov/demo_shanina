@@ -277,7 +277,7 @@ jQuery.easing["jswing"]=jQuery.easing["swing"];jQuery.extend(jQuery.easing,{def:
 
 	function setAutoplay($carousel) {
 		var time = $carousel.attr('data-autoplay');
-		if (time === null) return;
+		if (time == null) return;
 
 		var prev = $carousel.data('carouselAutoplay');
 		if (prev) clearTimeout(prev);
