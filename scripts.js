@@ -631,8 +631,6 @@ jQuery.easing["jswing"]=jQuery.easing["swing"];jQuery.extend(jQuery.easing,{def:
 !(function($) {
 
   var duration = 500;
-
-  var delay = null;
   var count = 2;
 
   function finish() {
@@ -675,4 +673,81 @@ jQuery.easing["jswing"]=jQuery.easing["swing"];jQuery.extend(jQuery.easing,{def:
   }
 
   $(document).on('change.carousel', '.lead .carousel', onChange);
+})(window.jQuery);
+
+/// ----------------------------
+/// Хак для кнопок "Поделиться".
+/// ----------------------------
+!(function($) {
+
+  function createMeta(name, value) {
+    var meta = document.createElement('META');
+    meta.setAttribute('property', name);
+    meta.setAttribute('content', value);
+    return meta;
+  }
+
+  function setMeta($share) {
+    var title = $share.attr('data-title') || '';
+    var desc = $share.attr('data-description') || '';
+    var url = $share.attr('data-url') || '';
+    var image = $share.attr('data-image') || '';
+
+    var titleMeta = createMeta('og:title', title);
+    var descMetaNative = createMeta('description', desc);
+    var descMeta = createMeta('og:description', desc);
+    var imageMeta = createMeta('og:image', image);
+    var urlMeta = createMeta('og:url', url);
+    var typeMeta = createMeta('og:type', 'website');
+
+    document.title = title;
+    var $head = $(document.head);
+
+    $head
+      .remove('meta[property=description]')
+      .append(titleMeta)
+      .append(descMetaNative)
+      .append(descMeta)
+      .append(imageMeta)
+      .append(urlMeta)
+      .append(typeMeta);
+  }
+
+  function setDomain($share, attr) {
+    var value = $share.attr(attr);
+    if (value == null) return null;
+
+    var resolver = document.createElement('A');
+    resolver.href = value;
+
+    var href = resolver.href;
+    $share.attr(attr, href);
+
+    return href;
+  }
+
+  function init($share) {
+    var image = setDomain($share, 'data-image');
+    var url = setDomain($share, 'data-url');
+    return url;
+  }
+
+  function onReady() {
+    var $shares = $('[data-share]');
+    if ($shares.length == 0) return;
+
+    var shares = {};
+
+    for (var i = 0; i < $shares.length; i++) {
+      var $share = $shares.eq(i);
+      var url = init($share);
+      shares[url] = $share;
+    }
+
+    var current = window.location.href;
+    var $current = shares[current];
+    if ($current) setMeta($current);
+  }
+
+  $(document).ready(onReady);
 })(window.jQuery);
