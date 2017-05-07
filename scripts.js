@@ -646,9 +646,9 @@ jQuery.easing["jswing"]=jQuery.easing["swing"];jQuery.extend(jQuery.easing,{def:
   function onLoad() {
     var $preloader = $('[data-preloader]');
 
-    // $preloader.addClass('hidden');
-    // $(document.body).removeClass('fixed');
-    // after();
+    $preloader.addClass('hidden');
+    $(document.body).removeClass('fixed');
+    after();
   }
 
   function onGrid() {
