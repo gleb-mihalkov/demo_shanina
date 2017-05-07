@@ -642,7 +642,7 @@ button {
 
 .image[data-scroll-enter] {
   transition: all 1s ease-in-out;
-  transform: none;
+  transform: translate(0, 0);
   opacity: 1;
 }
 
