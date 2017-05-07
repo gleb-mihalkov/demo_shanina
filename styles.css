@@ -960,6 +960,15 @@ a:hover {
   font-size: 12px;
 }
 
+.footer__text a {
+  transition: all 250ms ease-in-out;
+  color: #e6b8a9;
+}
+
+.footer__text a:hover {
+  color: #fff;
+}
+
 .footer__soc {
   margin-left: 34px;
   font-size: 0;
