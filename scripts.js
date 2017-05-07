@@ -399,17 +399,13 @@ jQuery.easing["jswing"]=jQuery.easing["swing"];jQuery.extend(jQuery.easing,{def:
 	function getScrollerRange() {
 		var $top, $bottom;
 
-		if (_scrollerBottom == null) {
-			_scrollerBottom = ($bottom = getElement('data-scroll-finish'))
-				? getElementTop($bottom)
-				: getDocument().height();
-		}
+		_scrollerBottom = ($bottom = getElement('data-scroll-finish'))
+			? getElementTop($bottom)
+			: getDocument().height();
 
-		if (_scrollerTop == null) {
-			_scrollerTop = ($top = getElement('data-scroll-start'))
-				? getElementBottom($top)
-				: getViewHeight() / 2;
-		}
+		_scrollerTop = ($top = getElement('data-scroll-start'))
+			? getElementBottom($top)
+			: getViewHeight() / 2;
 
 		return [_scrollerTop, _scrollerBottom];
 	}
@@ -578,6 +574,7 @@ jQuery.easing["jswing"]=jQuery.easing["swing"];jQuery.extend(jQuery.easing,{def:
 
 	function onReady() {
 		initEnters();
+		refreshScroller();
 	}
 
 	getDocument()
