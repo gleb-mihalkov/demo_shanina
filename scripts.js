@@ -751,3 +751,40 @@ jQuery.easing["jswing"]=jQuery.easing["swing"];jQuery.extend(jQuery.easing,{def:
 
   $(document).ready(onReady);
 })(window.jQuery);
+
+/**
+ * Плагин для ленивой загрузки изображений.
+ * Чтобы подключить плагин, достаточно ставить у изображений вместо
+ * src атрибут data-src с тем же содержимым.
+ */
+!(function($) {
+
+  /**
+   * Инициализирует изображение.
+   * @param  {jQuery} $image Изображение.
+   * @return {void}
+   */
+  function init($image) {
+    var src = $image.attr('data-src');
+    $image.attr('src', src);
+  }
+
+  /**
+   * Выполняется при загрузке страницы.
+   * @return {void}
+   */
+  function onReady() {
+    var $images = $('[data-src]');
+    console.log($images);
+
+    for (var i = 0; i < $images.length; i++) {
+      var $image = $images.eq(i);
+      init($image);
+    }
+  }
+
+  console.log('Hello!');
+
+  // Прикреппляем обработчики.
+  $(document).ready(onReady);
+})(window.jQuery);
