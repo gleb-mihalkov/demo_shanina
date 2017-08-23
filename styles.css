@@ -1630,62 +1630,12 @@ body.fixed .header-menu {
   width: 100%;
   max-width: 474px;
   min-width: 300px;
+  padding: 24px;
 }
 
 .preloader.hidden {
   visibility: hidden;
   opacity: 0;
-}
-
-.preloader .loader__logo {
-  animation: loader_logo 1.5s linear infinite;
-  transform-origin: center center;
-}
-
-.preloader .loader__corner-tl {
-  animation: loader_corner_tl 1.5s linear infinite;
-}
-
-.preloader .loader__corner-tr {
-  animation: loader_corner_tr 1.5s linear infinite;
-}
-
-.preloader .loader__corner-bl {
-  animation: loader_corner_bl 1.5s linear infinite;
-}
-
-.preloader .loader__corner-br {
-  animation: loader_corner_br 1.5s linear infinite;
-}
-
-@keyframes loader_corner_tl {
-  50% {
-    transform: translate(-12px, -12px);
-  }
-}
-
-@keyframes loader_corner_tr {
-  50% {
-    transform: translate(12px, -12px);
-  }
-}
-
-@keyframes loader_corner_bl {
-  50% {
-    transform: translate(-12px, 12px);
-  }
-}
-
-@keyframes loader_corner_br {
-  50% {
-    transform: translate(12px, 12px);
-  }
-}
-
-@keyframes loader_logo {
-  50% {
-    transform: scale(0.85);
-  }
 }
 
 .scroll {
@@ -2527,4 +2477,105 @@ body.fixed .header-menu {
 
 .ya-share2__item_service_facebook .ya-share2__icon:hover {
   background-image: url(img/soc_fb_pink.svg) !important;
+}
+
+.loader__inner {
+  position: relative;
+  width: 100%;
+  height: 240px;
+}
+
+.loader__inner:before, .loader__inner:after {
+  transition: all 250ms ease-in-out;
+  border-top-style: solid;
+  border-color: #fff;
+  border-width: 2px;
+  position: absolute;
+  top: 0;
+  opacity: 0.5;
+  display: block;
+  width: 24px;
+  height: 24px;
+  content: '';
+}
+
+.loader__inner:before {
+  border-left-style: solid;
+  left: 0;
+}
+
+.loader__inner:after {
+  border-right-style: solid;
+  right: 0;
+}
+
+.loader__inner > *:before, .loader__inner > *:after {
+  border-bottom-style: solid;
+  border-top: none;
+  top: auto;
+  bottom: 0;
+}
+
+.loader__inner:before, .loader__inner:after {
+  transform: translate(0, 0);
+}
+
+.loader__inner:before {
+  animation: loader_corner_tl 2s cubic-bezier(0.17, 0.67, 0.1, 1) infinite;
+}
+
+.loader__inner:after {
+  animation: loader_corner_tr 2s cubic-bezier(0.17, 0.67, 0.1, 1) infinite;
+}
+
+.loader__inner > *:before {
+  animation: loader_corner_bl 2s cubic-bezier(0.17, 0.67, 0.1, 1) infinite;
+}
+
+.loader__inner > *:after {
+  animation: loader_corner_br 2s cubic-bezier(0.17, 0.67, 0.1, 1) infinite;
+}
+
+.loader__image {
+  animation: loader_logo 2s cubic-bezier(0.17, 0.67, 0.1, 1) infinite;
+  background: url(img/logo_white.svg) center center no-repeat;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -50px;
+  margin-top: -50px;
+  display: block;
+  width: 100px;
+  height: 100px;
+}
+
+@keyframes loader_corner_tl {
+  50% {
+    transform: translate(-12px, -12px);
+  }
+}
+
+@keyframes loader_corner_tr {
+  50% {
+    transform: translate(12px, -12px);
+  }
+}
+
+@keyframes loader_corner_bl {
+  50% {
+    transform: translate(-12px, 12px);
+  }
+}
+
+@keyframes loader_corner_br {
+  50% {
+    transform: translate(12px, 12px);
+  }
+}
+
+@keyframes loader_logo {
+  50% {
+    transform: scale(0.85);
+    filter: blur(1px);
+  }
 }
