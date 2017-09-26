@@ -380,7 +380,7 @@ jQuery.easing["jswing"]=jQuery.easing["swing"];jQuery.extend(jQuery.easing,{def:
     $(window).trigger('grid');
   }
 
-  $(document).ready(onReady);
+  $(document).on('start', onReady);
 })(window.jQuery);
 /// ----------------------
 /// Прокрутка вниз.
@@ -631,16 +631,20 @@ jQuery.easing["jswing"]=jQuery.easing["swing"];jQuery.extend(jQuery.easing,{def:
 !(function($) {
 
   var duration = 500;
-  var count = 2;
+  var count = 1;
+  var hiddens = ['.global', /*'.menu',*/ '.modal'];
+
+  function showAll() {
+    for (var i = 0; i < hiddens.length; i++) {
+      $(hiddens[i]).show();
+    }
+  }
 
   function finish() {
     $(document).trigger('start');
-  }
 
-  function after() {
-    count -= 1;
-    if (count) return;
-    setTimeout(finish, duration);
+    $('.modal').show();
+    $('.menu').show();
   }
 
   function onLoad() {
@@ -648,16 +652,13 @@ jQuery.easing["jswing"]=jQuery.easing["swing"];jQuery.extend(jQuery.easing,{def:
 
     $preloader.addClass('hidden');
     $(document.body).removeClass('fixed');
-    after();
+
+    $('.global').show();
+
+    setTimeout(finish, duration);
   }
 
-  function onGrid() {
-    after();
-  }
-
-	$(window)
-    .on('load', onLoad)
-    .on('grid', onGrid);
+	$(window).on('load', onLoad);
 
 })(window.jQuery);
 
@@ -775,15 +776,12 @@ jQuery.easing["jswing"]=jQuery.easing["swing"];jQuery.extend(jQuery.easing,{def:
    */
   function onReady() {
     var $images = $('[data-src]');
-    console.log($images);
 
     for (var i = 0; i < $images.length; i++) {
       var $image = $images.eq(i);
       init($image);
     }
   }
-
-  console.log('Hello!');
 
   // Прикреппляем обработчики.
   $(document).ready(onReady);
